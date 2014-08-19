@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.lappsgrid</groupId>
+    <artifactId>WSDLClient</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>WSDLClient: Invorking WSDL </name>
+    <description>
+      
+    </description>
+    <packaging>jar</packaging>
+
+    <url>http://chunqishi.github.io/WSDLClient/</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <issueManagement>
+        <url>https://github.com/chunqishi/WSDLClient/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    <scm>
+        <url>https://github.com/chunqishi/WSDLClient</url>
+        <connection>scm:git:https://github.com/chunqishi/WSDLClient.git</connection>
+        <developerConnection>scm:git:https://github.com/chunqishi/WSDLClient.git</developerConnection>
+        <tag>v0.0.1</tag>
+    </scm>
+
+    <distributionManagement>
+    </distributionManagement>
+
+    <developers>
+        <developer>
+            <email>chunqi.shi@hotmail.com</email>
+            <name>Chunqi SHI</name>
+            <url>https://github.com/chunqishi/</url>
+            <id>chunqishi</id>
+        </developer>
+    </developers>
+
+    <properties>
+    </properties>
+
+    <dependencies>
+        <!-- =============================================  -->
+        <!-- ^^^^^^^^^^^^^^ AXIS SOAP ^^^^^^^^^^^^^^^^^^^^^ -->
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <!-- =============================================  -->
+        <!-- ^^^^^^^^^^^^^^ JAVA RPC ^^^^^^^^^^^^^^^^^^^^^ -->
+        <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>jaxrpc-api</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-discovery</groupId>
+            <artifactId>commons-discovery</artifactId>
+            <version>0.4</version>
+        </dependency>
+        <!-- =============================================  -->
+        <!-- ^^^^^^^^^^^^^^ Logging  ^^^^^^^^^^^^^^^^^^^^^ -->
+        <!--<dependency>-->
+            <!--<groupId>commons-logging</groupId>-->
+            <!--<artifactId>commons-logging</artifactId>-->
+            <!--<version>1.1.1</version>-->
+        <!--</dependency>-->
+        <!-- =============================================  -->
+        <!-- ^^^^^^^^^^^^^^ JUNIT TEST^^^^^^^^^^^^^^^^^^^^^ -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+		<plugins>
+		</plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5</version>
+                    <configuration>
+                        <tagNameFormat>v@{project.version}</tagNameFormat>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <releaseProfiles>releases</releaseProfiles>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+    </profiles>
+</project>
