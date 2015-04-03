@@ -37,6 +37,7 @@ import java.util.List;
 import java.net.MalformedURLException;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
+import org.apache.axis.message.SOAPHeaderElement;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -163,6 +164,13 @@ public class WSDLClient {
     public Object callService(String namespace, String operationName, Object... params)
             throws MalformedURLException, RemoteException {
         call.setTargetEndpointAddress(new URL(conf.getSoapAddress()));
+        String uri = new URL(new URL(namespace), operationName).toString();
+        System.out.println(uri);
+        call.setSOAPActionURI (uri);
+//        SOAPHeaderElement header = new SOAPHeaderElement (" "," SystemInital ");
+//        header.setNamespaceURI (" ");
+//        header.addChildElement (_requestXml);
+//        call.addHeader (header);
         return call.invoke(namespace, operationName, params);
     }
 
@@ -172,6 +180,9 @@ public class WSDLClient {
         call.setTargetEndpointAddress(new URL(conf.getSoapAddress()));
         // prepare operator & parameters.
         // method.
+        String uri = new URL(new URL(operationName.getNamespaceURI()), operationName.getLocalPart()).toString();
+//        System.out.println(uri);
+        call.setSOAPActionURI (uri);
         call.setOperationName(operationName);
         // parameters
         return call.invoke(params);

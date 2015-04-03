@@ -48,6 +48,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.lappsgrid</groupId>
+            <artifactId>api</artifactId>
+            <version>1.0.1</version>
+        </dependency>
         <!-- =============================================  -->
         <!-- ^^^^^^^^^^^^^^ AXIS SOAP ^^^^^^^^^^^^^^^^^^^^^ -->
         <dependency>
@@ -69,6 +74,31 @@
             <artifactId>commons-discovery</artifactId>
             <version>0.4</version>
         </dependency>
+
+
+        <!-- =============================================  -->
+        <!-- ^^^^^^^^^^^^^^ soapui  ^^^^^^^^^^^^^^^^^^^^^ -->
+
+        <!--<dependency>-->
+            <!--<groupId>com.github.redfish4ktc.soapui</groupId>-->
+            <!--<artifactId>soapui</artifactId>-->
+            <!--<version>4.0.1.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.github.redfish4ktc.soapui</groupId>-->
+            <!--<artifactId>maven-soapui-extension-plugin</artifactId>-->
+            <!--<version>4.0.1.0</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.xmlbeans</groupId>-->
+            <!--<artifactId>xmlbeans</artifactId>-->
+            <!--<version>2.6.0</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.unitils.soapui</groupId>
+            <artifactId>unitils-soapui</artifactId>
+            <version>1.0.2</version>
+        </dependency>
         <!-- =============================================  -->
         <!-- ^^^^^^^^^^^^^^ Logging  ^^^^^^^^^^^^^^^^^^^^^ -->
         <!--<dependency>-->
@@ -82,7 +112,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.1</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
