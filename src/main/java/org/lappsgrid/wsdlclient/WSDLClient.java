@@ -164,9 +164,16 @@ public class WSDLClient {
     public Object callService(String namespace, String operationName, Object... params)
             throws MalformedURLException, RemoteException {
         call.setTargetEndpointAddress(new URL(conf.getSoapAddress()));
-        String uri = new URL(new URL(namespace), operationName).toString();
-        System.out.println(uri);
-        call.setSOAPActionURI (uri);
+        String soapAction = getSoapActions(operationName);
+        if (soapAction != null && soapAction.length() > 0){
+            System.out.println("SoapAction:"+soapAction);
+            call.setSOAPActionURI (soapAction);
+        }
+
+//        if(namespace.toLowerCase().startsWith("http")) {
+//            String uri = new URL(new URL(namespace), operationName).toString();
+//            call.setSOAPActionURI (uri);
+//        }
 //        SOAPHeaderElement header = new SOAPHeaderElement (" "," SystemInital ");
 //        header.setNamespaceURI (" ");
 //        header.addChildElement (_requestXml);
@@ -179,13 +186,24 @@ public class WSDLClient {
             throws MalformedURLException, RemoteException {
         call.setTargetEndpointAddress(new URL(conf.getSoapAddress()));
         // prepare operator & parameters.
+        String soapAction = getSoapActions(operationName.getLocalPart());
+        if (soapAction != null && soapAction.length() > 0)
+            System.out.println("SoapAction:"+soapAction);
+            call.setSOAPActionURI (soapAction);
         // method.
-        String uri = new URL(new URL(operationName.getNamespaceURI()), operationName.getLocalPart()).toString();
-//        System.out.println(uri);
-        call.setSOAPActionURI (uri);
+//        if (operationName.getNamespaceURI().toLowerCase().startsWith("http")) {
+//            String uri = new URL(new URL(operationName.getNamespaceURI()), operationName.getLocalPart()).toString();
+//            call.setSOAPActionURI(uri);
+//        }
         call.setOperationName(operationName);
         // parameters
         return call.invoke(params);
+    }
+
+
+    public String getSoapActions(String operation) {
+        return xpath.getAttrs("definitions/binding/operation[@name='"
+                + operation +"']/operation").get("soapAction");
     }
 
     public String[] getParameterOrder(String operation) {
@@ -433,4 +451,27 @@ public class WSDLClient {
             return result.toString();
         }
     }
+
+
+
+    public static class WSDLClientException extends java.lang.Exception {
+
+        public WSDLClientException() {
+            super();
+        }
+
+        public WSDLClientException(java.lang.String message) {
+            super(message);
+        }
+
+        public WSDLClientException(java.lang.String message, java.lang.Throwable cause) {
+            super(message,cause);
+        }
+
+        public WSDLClientException(java.lang.Throwable cause) {
+            super(cause);
+        }
+
+    }
+
 }
